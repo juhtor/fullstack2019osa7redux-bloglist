@@ -22,7 +22,6 @@ import UserList from './components/UserList'
 // import { Navbar, Nav } from 'react-bootstrap'
 
 const App = (props) => {
-  console.log('backend url')
   useEffect(() => {
     blogService.getAll().then(blogs => {
       props.initializeBlogs(blogs)
