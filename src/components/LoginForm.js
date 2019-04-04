@@ -39,12 +39,14 @@ const LoginForm = (props) => {
       <Form onSubmit={login}>
         <Form.Field>
           username:
-          <input value={username}
+          <input id='username'
+            value={username}
             onChange={onUsernameChange} />
         </Form.Field>
         <Form.Field>
           password:
-          <input value={password}
+          <input id='password'
+            value={password}
             onChange={onPasswordChange}
             type='password' />
         </Form.Field>

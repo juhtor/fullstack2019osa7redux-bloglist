@@ -29,19 +29,19 @@ const AddBlogForm = (props) => {
     <div>
       <form onSubmit={handleAddBlog}>
         title:
-        <input
+        <input id='titleInput'
           value={title}
           onChange={(event) => { setTitle(event.target.value) }} />
         <br />
         author:
-        <input
+        <input id='authorInput'
           value={author}
           onChange={(event) => { setAuthor(event.target.value) }} />        <br />
         url:
-        <input
+        <input id='urlInput'
           value={url}
           onChange={(event) => { setUrl(event.target.value) }} />        <br />
-        <button type='submit'>add</button>
+        <button id='addBlog' type='submit'>add</button>
       </form>
     </div>
   )

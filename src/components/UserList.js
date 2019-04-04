@@ -30,7 +30,7 @@ const UserList = (props) => {
                   <Link to={`/users/${user.id}`} >{user.username}</Link>
                 </Table.Cell>
                 <Table.Cell>
-                  {user.username}
+                  {user.name}
                 </Table.Cell>
               </TableRow>
             )}

@@ -23,19 +23,21 @@ import UserList from './components/UserList'
 
 const App = (props) => {
   useEffect(() => {
-    blogService.getAll().then(blogs => {
-      props.initializeBlogs(blogs)
-    })
-    userService.getAll().then(users => {
-      props.initializeUsers(users)
-    })
+    if (props.user !== undefined) {
+      blogService.getAll().then(blogs => {
+        props.initializeBlogs(blogs)
+      })
+      userService.getAll().then(users => {
+        props.initializeUsers(users)
+      })
+    }
   }, [])
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       props.setUser(user)
-      if (user !== null) {
+      if (user !== null && user !== undefined && user.length > 0) {
         blogService.setToken(user.token)
       }
     }
@@ -54,7 +56,7 @@ const App = (props) => {
     window.localStorage.setItem('loggedBlogappUser', null)
   }
 
-  if (props.user === null) {
+  if (props.user === null || props.user === undefined) {
     return (
       <div>
         <Notification />
@@ -64,9 +66,9 @@ const App = (props) => {
   }
   const Header = () => (
     <div className='header'>
-      <Link to='/'>home</Link>
-      <Link to='/blogs'>blogs</Link>
-      <Link to='/users'>users</Link>
+      <Link id='homeLink' to='/'>home</Link>
+      <Link id='blogsLink' to='/blogs'>blogs</Link>
+      <Link id='usersLink' to='/users'>users</Link>
       {props.user.username} logged in <button onClick={handleLogout}>logout</button >
     </div>
   )

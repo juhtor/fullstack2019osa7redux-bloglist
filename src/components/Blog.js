@@ -46,14 +46,14 @@ const Blog = (props) => {
       {props.blog.url}
       <br />
       {props.blog.likes} likes
-      <button onClick={like}>like</button>
+      <button id='likeBlog' onClick={like}>like</button>
       <br />
-      added by {props.blog.user.name}
+      added by {props.blog.user.username}
       <br />
       <h2>comments</h2>
-      <input value={comment}
+      <input id='commentInput' value={comment}
         onChange={(event) => { setComment(event.target.value) }} />
-      <button onClick={addComment}>add comment</button>
+      <button id='addComment' onClick={addComment}>add comment</button>
       <ul>
         {props.blog.comments
           .map(comment =>
